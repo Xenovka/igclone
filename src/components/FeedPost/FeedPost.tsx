@@ -1,25 +1,33 @@
-import {Image, StyleSheet, Text, View} from 'react-native';
+import {Image, Text, View} from 'react-native';
 import Entypo from 'react-native-vector-icons/Entypo';
 import AntDesign from 'react-native-vector-icons/AntDesign';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import Feather from 'react-native-vector-icons/Feather';
 
+import Comment from '../Comment';
+
+import {IPost} from '../../types/models';
+
 import colors from '../../theme/colors';
 
 import styles from './styles';
 
-const FeedPost = () => {
+interface IFeedPost {
+  post: IPost;
+}
+
+const FeedPost = ({post}: IFeedPost) => {
   return (
     <View style={styles.post}>
       {/* Header */}
       <View style={styles.header}>
         <Image
           source={{
-            uri: 'https://notjustdev-dummy.s3.us-east-2.amazonaws.com/avatars/1.jpg',
+            uri: post.user.image,
           }}
           style={styles.userAvatar}
         />
-        <Text style={styles.userName}>wendyyyanto</Text>
+        <Text style={styles.userName}>{post.user.username}</Text>
         <Entypo
           name="dots-three-horizontal"
           size={16}
@@ -30,7 +38,7 @@ const FeedPost = () => {
       {/* Content */}
       <Image
         source={{
-          uri: 'https://notjustdev-dummy.s3.us-east-2.amazonaws.com/images/1.jpg',
+          uri: post.image,
         }}
         style={styles.image}
       />
@@ -67,29 +75,23 @@ const FeedPost = () => {
         {/* Likes */}
         <Text style={styles.text}>
           Liked by <Text style={styles.bold}>anjayreact</Text> and{' '}
-          <Text style={styles.bold}>96 others</Text>
+          <Text style={styles.bold}>{post.nofLikes} others</Text>
         </Text>
 
         {/* Caption */}
         <Text style={styles.text}>
-          <Text style={styles.bold}>wendyyyanto</Text> Lorem ipsum dolor sit
-          amet consectetur adipisicing elit. Vitae deleniti aut cum minima
-          ipsam, officiis quaerat beatae maiores incidunt libero. Sint placeat,
-          repudiandae ad quos impedit sit nemo magni pariatur!
+          <Text style={styles.bold}>{post.user.username}</Text>{' '}
+          {post.description}
         </Text>
 
         {/* Comments */}
-        <Text>View all 16 comments</Text>
-        <View style={styles.comment}>
-          <Text style={styles.commentText}>
-            <Text style={styles.bold}>wendyyyanto</Text> Lorem ipsum dolor sit
-            amet consectetur adipisicing elit.
-          </Text>
-          <AntDesign name="hearto" style={styles.icon} color={colors.black} />
-        </View>
+        <Text>View all {post.nofComments} comments</Text>
+        {post.comments.map(comment => (
+          <Comment key={comment.id} comment={comment} />
+        ))}
 
         {/* Posted date */}
-        <Text>21 March, 2024</Text>
+        <Text>{post.createdAt}</Text>
       </View>
     </View>
   );
