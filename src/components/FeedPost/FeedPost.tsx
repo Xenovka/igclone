@@ -5,6 +5,7 @@ import AntDesign from 'react-native-vector-icons/AntDesign';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import Feather from 'react-native-vector-icons/Feather';
 
+import Carousel from '../Carousel';
 import Comment from '../Comment';
 import DoublePressable from '../DoublePressable';
 
@@ -30,6 +31,22 @@ const FeedPost = ({post}: IFeedPost) => {
     setIsLiked(!isLiked);
   };
 
+  let content = null;
+  if (post.image) {
+    content = (
+      <DoublePressable onDoublePress={toggleLike}>
+        <Image
+          source={{
+            uri: post.image,
+          }}
+          style={styles.image}
+        />
+      </DoublePressable>
+    );
+  } else if (post.images) {
+    content = <Carousel images={post.images} onDoublePress={toggleLike} />;
+  }
+
   return (
     <View style={styles.post}>
       {/* Header */}
@@ -49,14 +66,7 @@ const FeedPost = ({post}: IFeedPost) => {
       </View>
 
       {/* Content */}
-      <DoublePressable onDoublePress={toggleLike}>
-        <Image
-          source={{
-            uri: post.image,
-          }}
-          style={styles.image}
-        />
-      </DoublePressable>
+      {content}
 
       {/* Footer */}
       <View style={styles.footer}>
