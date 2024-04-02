@@ -13,6 +13,7 @@ import DoublePressable from '../DoublePressable';
 import VideoPlayer from '../VideoPlayer';
 
 import {IPost} from '../../types/models';
+import {FeedNavigationProp} from '../../navigation/types';
 
 import colors from '../../theme/colors';
 
@@ -26,7 +27,7 @@ interface IFeedPost {
 const FeedPost = ({post, isVisible}: IFeedPost) => {
   const [isDescriptionExpanded, setIsDescriptionExpanded] = useState(false);
   const [isLiked, setIsLiked] = useState(false);
-  const navigation = useNavigation();
+  const navigation = useNavigation<FeedNavigationProp>();
 
   const navigateToUser = () => {
     navigation.navigate('UserProfile', {userId: post.user.id});

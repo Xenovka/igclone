@@ -4,9 +4,11 @@ import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import HomeScreen from '../screens/HomeScreen/HomeScreen';
 import ProfileScreen from '../screens/ProfileScreen';
 
+import {HomeStackNavigatorParamList} from './types';
+
 import logo from '../assets/images/logo.png';
 
-const Stack = createNativeStackNavigator();
+const Stack = createNativeStackNavigator<HomeStackNavigatorParamList>();
 
 const HomeStackNavigator = () => {
   return (

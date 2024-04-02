@@ -1,20 +1,19 @@
-import {Image, Text, View} from 'react-native';
 import {NavigationContainer} from '@react-navigation/native';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
 
 import BottomTabNavigator from './BottomTabNavigator';
 
-import HomeScreen from '../screens/HomeScreen/HomeScreen';
-import ProfileScreen from '../screens/ProfileScreen';
 import CommentsScreen from '../screens/CommentsScreen/CommentsScreen';
 
-const Stack = createNativeStackNavigator();
+import {RootNavigatorParamList} from './types';
+
+const Stack = createNativeStackNavigator<RootNavigatorParamList>();
 
 const Navigation = () => {
   return (
     <NavigationContainer>
       <Stack.Navigator
-        initialRouteName="Feed"
+        initialRouteName="Home"
         screenOptions={{headerShown: true}}>
         <Stack.Screen
           name="Home"

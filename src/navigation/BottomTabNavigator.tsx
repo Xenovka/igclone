@@ -4,13 +4,16 @@ import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityI
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
 
 import HomeScreen from '../screens/HomeScreen/HomeScreen';
-import ProfileScreen from '../screens/ProfileScreen';
 import PostUploadScreen from '../screens/PostUploadScreen';
+
 import colors from '../theme/colors';
+
 import HomeStackNavigator from './HomeStackNavigator';
 import ProfileStackNavigator from './ProfileStackNavigator';
 
-const Tab = createBottomTabNavigator();
+import {BottomTabNavigatorParamList} from './types';
+
+const Tab = createBottomTabNavigator<BottomTabNavigatorParamList>();
 
 const BottomTabNavigator = () => {
   return (
