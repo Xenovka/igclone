@@ -1,4 +1,5 @@
 import {StyleSheet, View} from 'react-native';
+import {SafeAreaProvider} from 'react-native-safe-area-context';
 
 // import HomeScreen from './src/screens/HomeScreen/HomeScreen';
 // import CommentsScreen from './src/screens/CommentsScreen/CommentsScreen';
@@ -8,7 +9,11 @@ import {StyleSheet, View} from 'react-native';
 import Navigation from './src/navigation';
 
 const App = () => {
-  return <Navigation />;
+  return (
+    <SafeAreaProvider>
+      <Navigation />
+    </SafeAreaProvider>
+  );
 };
 
 const styles = StyleSheet.create({
