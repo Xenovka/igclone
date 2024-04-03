@@ -2,7 +2,7 @@ import {View, Image, Text} from 'react-native';
 import {useNavigation} from '@react-navigation/native';
 import Button from '../../components/Button';
 
-import {ProfileNavigationProp} from '../../navigation/types';
+import {ProfileNavigationProp} from '../../types/navigation';
 
 import user from '../../assets/data/user.json';
 

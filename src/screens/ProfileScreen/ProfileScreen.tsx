@@ -9,7 +9,7 @@ import {
   MyProfileRouteProp,
   UserProfileNavigationProp,
   UserProfileRouteProp,
-} from '../../navigation/types';
+} from '../../types/navigation';
 
 import user from '../../assets/data/user.json';
 

@@ -13,7 +13,7 @@ import DoublePressable from '../DoublePressable';
 import VideoPlayer from '../VideoPlayer';
 
 import {IPost} from '../../types/models';
-import {FeedNavigationProp} from '../../navigation/types';
+import {FeedNavigationProp} from '../../types/navigation';
 
 import colors from '../../theme/colors';
 
